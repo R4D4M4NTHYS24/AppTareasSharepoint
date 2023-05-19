@@ -1,7 +1,5 @@
 export interface IAppTareasSharepointProps {
-  description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  titulo: string;
+  descripcion: string;
+  fecha: string;
 }
