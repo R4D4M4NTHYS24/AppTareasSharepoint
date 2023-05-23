@@ -1,7 +1,16 @@
 import * as React from "react";
 import { escape } from "@microsoft/sp-lodash-subset";
 import { IAppTareasSharepointProps } from "./IAppTareasSharepointProps";
-import { CircularProgress } from "@material-ui/core";
+import {
+  CircularProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@material-ui/core";
 
 const AppTareasSharepoint: React.FC<IAppTareasSharepointProps> = ({
   titulo,
@@ -10,12 +19,25 @@ const AppTareasSharepoint: React.FC<IAppTareasSharepointProps> = ({
 }) => {
   return (
     <section>
-      <div>
-        <h2>Título: {escape(titulo)}</h2>
-        <div>Descripción: {escape(descripcion)}</div>
-        <div>Fecha: {escape(fecha)}</div>
-        <CircularProgress />
-      </div>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Título</TableCell>
+              <TableCell>Descripción</TableCell>
+              <TableCell>Fecha</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>{escape(titulo)}</TableCell>
+              <TableCell>{escape(descripcion)}</TableCell>
+              <TableCell>{escape(fecha)}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <CircularProgress />
     </section>
   );
 };
