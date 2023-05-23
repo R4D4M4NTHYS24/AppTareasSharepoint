@@ -1,7 +1,7 @@
 import * as React from "react";
 import { escape } from "@microsoft/sp-lodash-subset";
 import { IAppTareasSharepointProps } from "./IAppTareasSharepointProps";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress } from "@material-ui/core";
 
 const AppTareasSharepoint: React.FC<IAppTareasSharepointProps> = ({
   titulo,
