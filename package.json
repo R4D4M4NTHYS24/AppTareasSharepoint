@@ -13,17 +13,21 @@
     "serve": "gulp serve"
   },
   "dependencies": {
-    "tslib": "2.3.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "office-ui-fabric-react": "^7.199.1",
+    "@emotion/react": "^11.11.0",
     "@fluentui/react": "^7.199.1",
-    "@microsoft/sp-core-library": "1.17.2",
+    "@material-ui/core": "^4.12.4",
     "@microsoft/sp-component-base": "1.17.2",
+    "@microsoft/sp-core-library": "1.17.2",
+    "@microsoft/sp-lodash-subset": "1.17.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.17.2",
     "@microsoft/sp-property-pane": "1.17.2",
     "@microsoft/sp-webpart-base": "1.17.2",
-    "@microsoft/sp-lodash-subset": "1.17.2",
-    "@microsoft/sp-office-ui-fabric-core": "1.17.2"
+    "@mui/material": "^5.13.2",
+    "material-table": "^2.0.3",
+    "office-ui-fabric-react": "^7.199.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-4.5": "0.5.0",
