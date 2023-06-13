@@ -8,7 +8,8 @@ import {
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import { IReadonlyTheme } from "@microsoft/sp-component-base";
 import * as strings from "AppTareasSharepointWebPartStrings";
-import AppTareasSharepoint from "./components/AppTareasSharepoint";
+import { AppTareasSharepoint } from "./components/AppTareasSharepoint";
+
 import { IAppTareasSharepointProps } from "./components/IAppTareasSharepointProps";
 
 export interface IAppTareasSharepointWebPartProps {
@@ -20,8 +21,10 @@ export default class AppTareasSharepointWebPart extends BaseClientSideWebPart<IA
     const element: React.ReactElement<IAppTareasSharepointProps> =
       React.createElement(AppTareasSharepoint, {
         titulo: this.properties.description,
+        codigo: "1234",
+        estado: "termino",
         descripcion: "Descripción de ejemplo",
-        fecha: new Date().toLocaleDateString(),
+        context: this.context, // Pasa el contexto como una prop
       });
 
     ReactDom.render(element, this.domElement);

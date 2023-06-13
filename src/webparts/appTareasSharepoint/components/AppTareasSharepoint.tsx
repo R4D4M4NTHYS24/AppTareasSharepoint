@@ -1,45 +1,45 @@
 import * as React from "react";
-import { escape } from "@microsoft/sp-lodash-subset";
-import { IAppTareasSharepointProps } from "./IAppTareasSharepointProps";
-import {
-  CircularProgress,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@material-ui/core";
+import { SPHttpClient, SPHttpClientResponse } from "@microsoft/sp-http";
 
-const AppTareasSharepoint: React.FC<IAppTareasSharepointProps> = ({
-  titulo,
-  descripcion,
-  fecha,
-}) => {
+export interface IAppTareasSharepointProps {
+  titulo: string;
+  codigo: string;
+  estado: string;
+  descripcion: string;
+  context: any; // Actualiza el tipo de la prop context según corresponda
+}
+
+export const AppTareasSharepoint: React.FC<IAppTareasSharepointProps> = (
+  props
+) => {
+  // Define la función loadTasks
+  const loadTasks = () => {
+    const spHttpClient: SPHttpClient = props.context.spHttpClient;
+    const siteUrl: string = props.context.pageContext.web.absoluteUrl;
+    const listUrl: string = `${siteUrl}/_api/lists/getbytitle('Tarea')/items`;
+
+    spHttpClient
+      .get(listUrl, SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
+        // Procesa la respuesta y obtén los datos de las tareas
+      })
+      .catch((error: any) => {
+        // Maneja los errores
+      });
+  };
+
+  React.useEffect(() => {
+    // Carga las tareas cuando el componente se monta
+    loadTasks();
+  }, []); // El segundo argumento del useEffect es un array vacío para indicar que solo se debe ejecutar una vez al montar el componente
+
   return (
-    <section>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Título</TableCell>
-              <TableCell>Descripción</TableCell>
-              <TableCell>Fecha</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>{escape(titulo)}</TableCell>
-              <TableCell>{escape(descripcion)}</TableCell>
-              <TableCell>{escape(fecha)}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <CircularProgress />
-    </section>
+    <div>
+      {/* Contenido de tu componente */}
+      <h1>{props.titulo}</h1>
+      <p>Código: {props.codigo}</p>
+      <p>Estado: {props.estado}</p>
+      <p>Descripción: {props.descripcion}</p>
+    </div>
   );
 };
-
-export default AppTareasSharepoint;
